@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ics.OpenApi", "Ics.OpenApi\Ics.OpenApi.csproj", "{32966F76-F811-401E-B2EF-DBAA4474663A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ics.OpenApi.Tests", "Ics.OpenApi.Tests\Ics.OpenApi.Tests.csproj", "{6330B678-9CA1-47FD-9B49-5619C1311DFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{630C6290-75B9-45BC-AE31-D6557D8BDC51}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32966F76-F811-401E-B2EF-DBAA4474663A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32966F76-F811-401E-B2EF-DBAA4474663A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32966F76-F811-401E-B2EF-DBAA4474663A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32966F76-F811-401E-B2EF-DBAA4474663A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6330B678-9CA1-47FD-9B49-5619C1311DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6330B678-9CA1-47FD-9B49-5619C1311DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6330B678-9CA1-47FD-9B49-5619C1311DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6330B678-9CA1-47FD-9B49-5619C1311DFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B217515-7C3B-41CA-AF63-14B44F09E4D0}
+	EndGlobalSection
+EndGlobal
