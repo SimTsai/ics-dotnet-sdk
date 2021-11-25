@@ -1,4 +1,4 @@
-﻿#if false && NETFRAMEWORK
+﻿#if NETFRAMEWORK
 using System.Threading.Tasks;
 using Ics.OpenApi.Implements;
 using Ics.OpenApi.Interfaces;
@@ -8,18 +8,18 @@ namespace Ics.OpenApi.Tests
 {
     public class IcsDeclareServiceTests : TestBase.LegacyConfigTestBase
     {
-        private readonly IDeclareService icsDeclareService;
+        private readonly IDeclareService declareService;
 
         public IcsDeclareServiceTests()
         {
             var serviceFactory = IcsServiceFactory.CreateIcsService(IcsOptions);
-            icsDeclareService = serviceFactory.IcsDeclareService;
+            declareService = serviceFactory.DeclareService;
         }
 
         [Fact]
         async public Task GetDelegateAsyncTest()
         {
-            var reply = await icsDeclareService
+            var reply = await declareService
                 .GetDelegateAsync(new Models.Declare.GetDelegateRequest
                 {
                     BusinessSerial = "2021112300006"

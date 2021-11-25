@@ -52,7 +52,7 @@ namespace Ics.OpenApi.Implements
             {
                 Success = reply.State == Enums.Internal.IcsReplyStatus.Succeed,
                 Message = reply.ErrorMessage ?? reply.Message,
-                Delegates = _mapper.Map<List<Models.Declare.Delegate>>(reply.Result)
+                Delegates = reply.State == Enums.Internal.IcsReplyStatus.Succeed ? _mapper.Map<List<Models.Declare.Delegate>>(reply.Result) : null
             };
         }
 
