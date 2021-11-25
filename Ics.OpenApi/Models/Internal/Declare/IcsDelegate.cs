@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 
-namespace Ics.OpenApi.Models.Declare
+namespace Ics.OpenApi.Models.Internal.Declare
 {
     /// <summary>
     /// 报关委托
     /// </summary>
-    public record Delegate
+    internal record IcsDelegate
     {
         /// <summary>
         /// 报关单 表头
         /// </summary>
-        public Declare Declare { get; init; }
+        public IcsDeclare Declare { get; init; }
         /// <summary>
         /// 报关单 商品明细
         /// </summary>
-        public List<MKDetail> MKDetailList { get; init; }
+        public List<IcsMKDetail> MKDetailList { get; init; }
     }
 }

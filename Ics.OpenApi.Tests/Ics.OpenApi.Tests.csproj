@@ -43,6 +43,9 @@
     <None Update="appsettings.Privacy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Demo\TransferDelegate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Privacy.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

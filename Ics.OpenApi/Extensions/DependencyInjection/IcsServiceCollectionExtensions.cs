@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Ics.OpenApi.Implements;
 using Ics.OpenApi.Interfaces;
 using Ics.OpenApi.Options;
+using Ics.OpenApi.Interfaces.Internal;
+using Ics.OpenApi.Implements.Internal;
 
 namespace Ics.OpenApi.Extensions.DependencyInjection
 {
@@ -19,16 +21,21 @@ namespace Ics.OpenApi.Extensions.DependencyInjection
         public static void AddIcs(this IServiceCollection services)
         {
             services.AddOptions();
-
+            services.AddHttpClient();
             services.AddDistributedMemoryCache();
             services.AddStackExchangeRedisCache(o => { });
+
+
             services.AddTransient<IIcsCacheProviderFactory, IcsCacheProviderFactory>();
-            services.AddTransient<IIcsTokenStorageService, IcsTokenStorageService>();
-            services.AddHttpClient();
             services.AddTransient<IIcsHttpClient, IcsHttpClient>();
-            services.AddTransient<IIcsOutRequestService, IcsOutRequestService>();
-            services.AddTransient<IIcsTokenService, IcsOutRequestService>();
-            services.AddTransient<IIcsDeclareService, IcsDeclareService>();
+            services.AddTransient<IIcsRequestService, IcsRequestService>();
+            services.AddTransient<IIcsUserService, IcsUserService>();
+
+
+            services.AddTransient<ITokenStorageService, IcsTokenStorageService>();
+            services.AddTransient<IDeclareService, DeclareService>();
+
+            services.AddAutoMapper(typeof(IcsServiceCollectionExtensions).Assembly);
         }
 
         /// <summary>
