@@ -8,14 +8,12 @@ namespace Ics.OpenApi.Interfaces
     /// </summary>
     public interface IDeclareService
     {
-
         /// <summary>
         /// 2.1	获取报关单及制单明细
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         Task<GetDelegateReply> GetDelegateAsync(GetDelegateRequest request);
-#if false
         /// <summary>
         /// 2.2	发送报关单及申报明细
         /// </summary>
@@ -28,7 +26,6 @@ namespace Ics.OpenApi.Interfaces
         /// <param name="request"></param>
         /// <returns></returns>
         Task<TransferStatusReply> TransferStatusAsync(TransferStatusRequest request);
-#endif
     }
 }
 

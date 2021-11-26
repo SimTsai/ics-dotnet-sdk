@@ -69,6 +69,8 @@ namespace Ics.OpenApi.Options
             { "获取报关单及制单明细", "/api/v2.0/Declare/GetDelegate" },
             // 2.2	发送报关单及申报明细 Transfer Delegate
             { "发送报关单及申报明细", "/api/v2.0/Declare/TransferDelegate" },
+            // 2.4	发送审核状态 TransferStatus
+            { "发送审核状态", "/api/v2.0/Declare/TransferStatus" },
 
         };
         /// <summary>

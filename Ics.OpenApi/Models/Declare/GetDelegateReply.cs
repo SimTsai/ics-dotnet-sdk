@@ -8,7 +8,7 @@ namespace Ics.OpenApi.Models.Declare
     public record GetDelegateReply : ReplyBase
     {
         /// <summary>
-        /// 报关单
+        /// 委托单
         /// </summary>
         public List<Delegate> Delegates { get; init; }
     }

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Ics.OpenApi.Interfaces;
 using Ics.OpenApi.Interfaces.Internal;
 using Ics.OpenApi.Models.Declare;
-using Ics.OpenApi.Models.Internal;
 using Ics.OpenApi.Models.Internal.Declare;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
-using AutoMapper;
 
 namespace Ics.OpenApi.Implements
 {
@@ -45,7 +43,7 @@ namespace Ics.OpenApi.Implements
         async public Task<GetDelegateReply> GetDelegateAsync(GetDelegateRequest request)
         {
             var reply = await ((IIcsDeclareService)this)
-                .IcsGetDelegateAsync(new IcsGetDelegateRequest { BusinessSerial = request.BusinessSerial })
+                .IcsGetDelegateAsync(_mapper.Map<IcsGetDelegateRequest>(request))
                 .ConfigureAwait(false);
 
             return new GetDelegateReply
@@ -64,70 +62,51 @@ namespace Ics.OpenApi.Implements
             return reply;
         }
 
-
-
-
-#if false
-        /// <summary>
-        /// 2.1	获取报关单及制单明细
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        async public Task<GetDelegateReply> GetDelegateAsync(GetDelegateRequest request)
-        {
-            var outReply = await GetDelegateOutAsync(request).ConfigureAwait(false);
-            //var @delegate = new List<Models.Declare.Delegate>();
-            GetDelegateReply result = new GetDelegateReply
-            {
-                Success = outReply.State == Enums.IcsReplyStatus.Succeed,
-                Message = outReply.ErrorMessage ?? outReply.Message,
-                Delegates = outReply.Result
-            };
-
-            if (result.Success)
-            {
-
-            }
-
-            return result;
-        }
-
         /// <summary>
         /// 2.2	发送报关单及申报明细
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
         async public Task<TransferDelegateReply> TransferDelegateAsync(TransferDelegateRequest request)
         {
-            var outReply = await TransferDelegateOutAsync(request).ConfigureAwait(false);
-            TransferDelegateReply result = new TransferDelegateReply
+            var replay = await ((IIcsDeclareService)this)
+                .IcsTransferDelegateAsync(_mapper.Map<IcsTransferDelegateRequest>(request))
+                .ConfigureAwait(false);
+            return new TransferDelegateReply
             {
-                Success = outReply.State == Enums.IcsReplyStatus.Succeed,
-                Message = outReply.ErrorMessage ?? outReply.Message
+                Success = replay.State == Enums.Internal.IcsReplyStatus.Succeed,
+                Message = replay.ErrorMessage ?? replay.Message,
             };
-            if (result.Success)
+        }
+
+        async Task<IcsTransferDelegateReply> IIcsDeclareService.IcsTransferDelegateAsync(IcsTransferDelegateRequest request)
+        {
+            var reply = await icsRequestService
+                .RequestAsync<IcsTransferDelegateRequest, IcsTransferDelegateReply>(request, "发送报关单及申报明细")
+                .ConfigureAwait(false);
+            return reply;
+        }
+
+        /// <summary>
+        /// 2.4	发送审核状态
+        /// </summary>
+        async public Task<TransferStatusReply> TransferStatusAsync(TransferStatusRequest request)
+        {
+            var reply = await ((IIcsDeclareService)this)
+                .IcsTransferStatusAsync(_mapper.Map<IcsTransferStatusRequest>(request))
+                .ConfigureAwait(false);
+            return new TransferStatusReply
             {
-
-            }
-            return result;
+                Success = reply.State == Enums.Internal.IcsReplyStatus.Succeed,
+                Message = reply.ErrorMessage ?? reply.Message,
+            };
         }
 
-        async private Task<IcsOutReplyWrapper<GetDelegateOutReply>> GetDelegateOutAsync(GetDelegateRequest request)
+
+        async Task<IcsTransferStatusReply> IIcsDeclareService.IcsTransferStatusAsync(IcsTransferStatusRequest request)
         {
-
-            var outReply = await icsRequestService
-                .RequestAsync<GetDelegateRequest, GetDelegateOutReply>(request, "获取报关单及制单明细")
+            var reply = await icsRequestService
+                .RequestAsync<IcsTransferStatusRequest, IcsTransferStatusReply>(request, "发送审核状态")
                 .ConfigureAwait(false);
-            return outReply;
+            return reply;
         }
-
-        async private Task<IcsOutReplyWrapper<object>> TransferDelegateOutAsync(TransferDelegateRequest request)
-        {
-            var outReply = await icsRequestService
-                .RequestAsync<TransferDelegateRequest, object>(request, "发送报关单及申报明细")
-                .ConfigureAwait(false);
-            return outReply;
-        }
-#endif
     }
 }

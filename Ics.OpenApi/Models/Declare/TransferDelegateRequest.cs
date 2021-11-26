@@ -3,17 +3,17 @@
 namespace Ics.OpenApi.Models.Declare
 {
     /// <summary>
-    /// 委托单
+    /// 发送报关单及申报明细 请求
     /// </summary>
-    public record Delegate
+    public class TransferDelegateRequest
     {
         /// <summary>
-        /// 报关单 表头
+        /// 报关单
         /// </summary>
         public Declare Declare { get; init; }
         /// <summary>
-        /// 报关单 商品明细
+        /// 申报明细
         /// </summary>
-        public List<MKDetail> MKDetailList { get; init; }
+        public List<DDetail> DDetailList { get; init; }
     }
 }
