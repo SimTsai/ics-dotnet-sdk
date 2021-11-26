@@ -2,7 +2,7 @@
 
 namespace Ics.OpenApi.Models.Internal.Declare
 {
-    internal record IcsGetDelegateReply : IcsReplyWrapper<List<IcsDelegate>>
+    internal record IcsGetBFSCicReply : IcsReplyWrapper<List<IcsBFSCic>>
     {
     }
 }

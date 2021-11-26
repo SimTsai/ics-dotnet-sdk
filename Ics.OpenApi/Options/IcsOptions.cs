@@ -71,7 +71,14 @@ namespace Ics.OpenApi.Options
             { "发送报关单及申报明细", "/api/v2.0/Declare/TransferDelegate" },
             // 2.4	发送审核状态 TransferStatus
             { "发送审核状态", "/api/v2.0/Declare/TransferStatus" },
-
+            // 2.5	获取报关单集装箱明细 Get DelegateBox
+            { "获取报关单集装箱明细", "/api/v2.0/Declare/GetDelegateBox" },
+            // 2.6	发送报关单集装箱明细 TransferDelegateBox
+            { "发送报关单集装箱明细", "/api/v2.0/Declare/TransferDelegateBox" },
+            // 2.7	获取随附单证 GetBFSCic
+            { "获取随附单证", "/api/v2.0/Declare/GetBFSCic" },
+            // 2.8	发送随附单证 TransferBFSCic
+            { "发送随附单证", "/api/v2.0/Declare/TransferBFSCic" },
         };
         /// <summary>
         /// Token存储位置
