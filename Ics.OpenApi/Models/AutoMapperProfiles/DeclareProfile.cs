@@ -11,6 +11,7 @@ namespace Ics.OpenApi.Models.AutoMapperProfiles
         {
             Request2IcsRequest();
 
+            #region 2.1 & 2.2
             Delegate2IcsDelegate();
             IcsDelegate2Delegate();
 
@@ -22,13 +23,26 @@ namespace Ics.OpenApi.Models.AutoMapperProfiles
 
             DDetail2IcsDDetail();
             IcsDDetail2DDetail();
+            #endregion
 
+            #region 2.5
+            DelegateBox2IcsDelegateBox();
+            IcsDelegateBox2DelegateBox();
+            #endregion
 
+            #region 2.7
+            BFSCic2IcsBFSCic();
+            IcsBFSCic2BFSCic();
+            #endregion
         }
 
         TEnum ParseEnum<TEnum>(string input, TEnum defaultValue = default)
             where TEnum : struct
             => Enum.TryParse(input, true, out TEnum output) switch { true => output, _ => defaultValue };
+
+        TEnum ParseEnum<TEnum>(int? input, TEnum defaultValue = default)
+            where TEnum : struct
+            => !input.HasValue ? defaultValue : ParseEnum<TEnum>(input.ToString(), defaultValue);
 
         int? Parse(string input, int? defaultValue = default)
             => int.TryParse(input, out var output) switch { true => output, _ => defaultValue };
@@ -42,6 +56,10 @@ namespace Ics.OpenApi.Models.AutoMapperProfiles
             CreateMap<TransferDelegateRequest, IcsTransferDelegateRequest>();
             CreateMap<TransferStatusRequest, IcsTransferStatusRequest>()
                 .ForPath(dm => dm.Status, p => p.MapFrom(s => s.Status == TransferStatus.Unknown ? null : s.Status.ToString("G")));
+            CreateMap<GetDelegateBoxRequest, IcsGetDelegateBoxRequest>();
+            CreateMap<TransferDelegateBoxRequest, IcsTransferDelegateBoxRequest>();
+            CreateMap<GetBFSCicRequest, IcsGetBFSCicRequest>();
+            CreateMap<TransferBFSCicRequest, IcsTransferBFSCicRequest>();
         }
 
         void Delegate2IcsDelegate()
@@ -110,6 +128,34 @@ namespace Ics.OpenApi.Models.AutoMapperProfiles
                 .ForPath(dm => dm.SecondQty, p => p.MapFrom(s => Parse(s.SecondQty, null)))
 
                 .ForPath(dm => dm.LevyType, p => p.MapFrom(s => ParseEnum<Declare.LevyType>(s.LevyType, LevyType.Unknown)));
+        }
+
+        void DelegateBox2IcsDelegateBox()
+        {
+            CreateMap<DelegateBox, IcsDelegateBox>()
+                .ForPath(dm => dm.BoxWeight, p => p.MapFrom(s => s.BoxWeight.ToString()))
+                .ForPath(dm => dm.BoxJoinFlag, p => p.MapFrom(s => s.BoxJoinFlag == BoxJoinFlag.未拼 ? false : true))
+                .ForPath(dm => dm.IsKill, p => p.MapFrom(s => s.IsKill == YesNo.Yes))
+                .ForPath(dm => dm.IsNucleicAcid, p => p.MapFrom(s => s.IsNucleicAcid == YesNo.Yes));
+        }
+
+        void IcsDelegateBox2DelegateBox()
+        {
+            CreateMap<IcsDelegateBox, DelegateBox>()
+                .ForPath(dm => dm.BoxWeight, p => p.MapFrom(s => Parse(s.BoxWeight, null)))
+                .ForPath(dm => dm.BoxJoinFlag, p => p.MapFrom(s => s.BoxJoinFlag.GetValueOrDefault() ? BoxJoinFlag.未拼 : BoxJoinFlag.拼箱))
+                .ForPath(dm => dm.IsKill, p => p.MapFrom(s => s.IsKill.GetValueOrDefault() ? YesNo.Yes : YesNo.No))
+                .ForPath(dm => dm.IsNucleicAcid, p => p.MapFrom(s => s.IsNucleicAcid.GetValueOrDefault() ? YesNo.Yes : YesNo.No));
+        }
+
+        void BFSCic2IcsBFSCic()
+        {
+            CreateMap<BFSCic, IcsBFSCic>();
+        }
+
+        void IcsBFSCic2BFSCic()
+        {
+            CreateMap<IcsBFSCic, BFSCic>();
         }
     }
 }

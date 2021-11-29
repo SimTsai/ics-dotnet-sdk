@@ -1,0 +1,13 @@
+{
+    "BusinessSerial": "2021112300006",
+    "CICList": [
+        {
+            "CicCode": "Y",
+            "CicNo": "11111111"
+        },
+        {
+            "CicCode": "C",
+            "CicNo": "22222222"
+        }
+    ]
+}

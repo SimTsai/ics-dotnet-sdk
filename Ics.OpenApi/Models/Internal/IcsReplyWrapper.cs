@@ -6,13 +6,25 @@ using Ics.OpenApi.Options.Internal;
 
 namespace Ics.OpenApi.Models.Internal
 {
+    /// <summary>
+    /// Ics响应包裹
+    /// </summary>
     internal partial record IcsReplyWrapper<TReply>
     {
+        /// <summary>
+        /// Ics响应 状态
+        /// </summary>
         public virtual IcsReplyStatus State { get; init; }
 
+        /// <summary>
+        /// Ics响应 信息
+        /// </summary>
         [JsonPropertyName("Msg")]
         public virtual string Message { get; init; }
 
+        /// <summary>
+        /// Ics响应 数据
+        /// </summary>
         [JsonPropertyName("Data")]
         [System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
         [System.Diagnostics.DebuggerHidden]

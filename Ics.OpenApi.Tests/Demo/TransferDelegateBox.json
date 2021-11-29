@@ -1,0 +1,53 @@
+{
+    "BusinessSerial": "2021112300006",
+    "BoxList": [
+        {
+            "BoxNo": "TCLU1234567",
+            "BoxSpec": "11",
+            "BoxWeight": 3800,
+            "BoxJoinFlag": "未拼",
+            "GoodsRpGno": "1",
+            "BoxQuantity": 1,
+            "BoxType": "40尺",
+            "BoxCargoWeight": 4800.0000,
+            "RdDate": "2021-11-23T00:00:00",
+            "Remarks": "",
+            "RetunrBoxDate": null,
+            "IsKill": "No",
+            "IsNucleicAcid": "No",
+            "NucleicAcidDate": "2021-11-24T00:00:00"
+        },
+        {
+            "BoxNo": "TCLU1111111",
+            "BoxSpec": "11",
+            "BoxWeight": 3800,
+            "BoxJoinFlag": "未拼",
+            "GoodsRpGno": "1",
+            "BoxQuantity": 1,
+            "BoxType": "40尺",
+            "BoxCargoWeight": 4800.0000,
+            "RdDate": "2021-11-29T00:00:00",
+            "Remarks": "ddd",
+            "RetunrBoxDate": null,
+            "IsKill": "No",
+            "IsNucleicAcid": "No",
+            "NucleicAcidDate": "2021-11-29T00:00:00"
+        },
+        {
+            "BoxNo": "MRSU3096086",
+            "BoxSpec": "11",
+            "BoxWeight": 1110,
+            "BoxJoinFlag": "未拼",
+            "GoodsRpGno": "1",
+            "BoxQuantity": 1,
+            "BoxType": "20GP",
+            "BoxCargoWeight": 1230.0000,
+            "RdDate": null,
+            "Remarks": null,
+            "RetunrBoxDate": null,
+            "IsKill": "No",
+            "IsNucleicAcid": "No",
+            "NucleicAcidDate": null
+        }
+    ]
+}

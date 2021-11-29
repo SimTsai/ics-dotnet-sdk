@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Ics.OpenApi.Models.Declare
 {
@@ -11,5 +7,9 @@ namespace Ics.OpenApi.Models.Declare
     /// </summary>
     public record GetDelegateBoxReply : ReplyBase
     {
+        /// <summary>
+        /// 集装箱明细
+        /// </summary>
+        public List<DelegateBox> Boxes { get; init; }
     }
 }

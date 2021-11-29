@@ -3,7 +3,7 @@
 namespace Ics.OpenApi.Models.Internal.Declare
 {
     /// <summary>
-    /// 报关单表头
+    /// 报关单
     /// </summary>
     internal record IcsDeclare
     {

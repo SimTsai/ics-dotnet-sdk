@@ -128,7 +128,7 @@ namespace Ics.OpenApi.Implements
             {
                 Success = reply.State == Enums.Internal.IcsReplyStatus.Succeed,
                 Message = reply.ErrorMessage ?? reply.Message,
-                //Delegates = reply.State == Enums.Internal.IcsReplyStatus.Succeed ? _mapper.Map<List<Models.Declare.Delegate>>(reply.Result) : null
+                Boxes = reply.State == Enums.Internal.IcsReplyStatus.Succeed ? _mapper.Map<List<DelegateBox>>(reply.Result) : null
             };
         }
 
@@ -180,7 +180,7 @@ namespace Ics.OpenApi.Implements
             {
                 Success = reply.State == Enums.Internal.IcsReplyStatus.Succeed,
                 Message = reply.ErrorMessage ?? reply.Message,
-                //Delegates = reply.State == Enums.Internal.IcsReplyStatus.Succeed ? _mapper.Map<List<Models.Declare.Delegate>>(reply.Result) : null
+                CicList = reply.State == Enums.Internal.IcsReplyStatus.Succeed ? _mapper.Map<List<BFSCic>>(reply.Result) : null
             };
         }
 

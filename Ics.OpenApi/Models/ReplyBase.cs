@@ -1,7 +1,7 @@
 ﻿namespace Ics.OpenApi.Models
 {
     /// <summary>
-    /// ICS响应基类
+    /// 响应基类
     /// </summary>
     public abstract record ReplyBase
     {

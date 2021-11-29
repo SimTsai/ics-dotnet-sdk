@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Ics.OpenApi.Models.Declare
 {
@@ -11,5 +7,13 @@ namespace Ics.OpenApi.Models.Declare
     /// </summary>
     public class TransferBFSCicRequest
     {
+        /// <summary>
+        /// 业务流水号
+        /// </summary>
+        public string BusinessSerial { get; init; }
+        /// <summary>
+        /// 随附单证表体
+        /// </summary>
+        public List<BFSCic> CICList { get; init; }
     }
 }

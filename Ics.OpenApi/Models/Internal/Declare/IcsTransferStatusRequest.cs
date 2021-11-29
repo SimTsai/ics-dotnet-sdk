@@ -2,6 +2,9 @@
 
 namespace Ics.OpenApi.Models.Internal.Declare
 {
+    /// <summary>
+    /// 发送审核状态 请求
+    /// </summary>
     internal record IcsTransferStatusRequest
     {
         /// <summary>

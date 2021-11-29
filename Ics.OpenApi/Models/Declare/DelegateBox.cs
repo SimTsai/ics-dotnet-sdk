@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Ics.OpenApi.Models.Internal.Declare
+namespace Ics.OpenApi.Models.Declare
 {
     /// <summary>
     /// 集装箱明细
     /// </summary>
-    internal record IcsDelegateBox
+    public record DelegateBox
     {
         /// <summary>
         /// 集装箱号
@@ -18,12 +18,11 @@ namespace Ics.OpenApi.Models.Internal.Declare
         /// <summary>
         /// 自重(KG)
         /// </summary>
-        public string BoxWeight { get; init; }
+        public decimal? BoxWeight { get; init; }
         /// <summary>
         /// 拼箱标识
-        /// 1 拼箱 0 未拼
         /// </summary>
-        public bool? BoxJoinFlag { get; init; }
+        public BoxJoinFlag BoxJoinFlag { get; init; }
         /// <summary>
         /// 商品项号关系
         /// </summary>
@@ -71,11 +70,11 @@ namespace Ics.OpenApi.Models.Internal.Declare
         /// <summary>
         /// 是否消杀
         /// </summary>
-        public bool? IsKill { get; init; }
+        public YesNo IsKill { get; init; }
         /// <summary>
         /// 是否核酸
         /// </summary>
-        public bool? IsNucleicAcid { get; init; }
+        public YesNo IsNucleicAcid { get; init; }
         /// <summary>
         /// 核酸时间
         /// </summary>

@@ -8,11 +8,11 @@ namespace Ics.OpenApi.Models.Declare
     public record Delegate
     {
         /// <summary>
-        /// 报关单 表头
+        /// 报关单
         /// </summary>
         public Declare Declare { get; init; }
         /// <summary>
-        /// 报关单 商品明细
+        /// 制单明细
         /// </summary>
         public List<MKDetail> MKDetailList { get; init; }
     }

@@ -1,5 +1,8 @@
 ﻿namespace Ics.OpenApi.Models.Internal.Declare
 {
+    /// <summary>
+    /// 获取报关单及制单明细 请求
+    /// </summary>
     internal record IcsGetDelegateRequest
     {
         /// <summary>

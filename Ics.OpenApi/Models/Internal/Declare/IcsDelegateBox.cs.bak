@@ -3,7 +3,7 @@
 namespace Ics.OpenApi.Models.Internal.Declare
 {
     /// <summary>
-    /// 集装箱明细
+    /// 集装箱
     /// </summary>
     internal record IcsDelegateBox
     {
@@ -23,7 +23,7 @@ namespace Ics.OpenApi.Models.Internal.Declare
         /// 拼箱标识
         /// 1 拼箱 0 未拼
         /// </summary>
-        public bool? BoxJoinFlag { get; init; }
+        public int? BoxJoinFlag { get; init; }
         /// <summary>
         /// 商品项号关系
         /// </summary>
