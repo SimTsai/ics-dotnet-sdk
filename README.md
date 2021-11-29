@@ -1,4 +1,6 @@
 # 跨境无忧ICS dotnet SDK
+===
+![Nuget](https://img.shields.io/nuget/v/ics-dotnet-sdk)
 
 ## How to use
 
@@ -57,3 +59,9 @@ service.AddIcs()
 |-|-|-|-|
 |1.2 api获取令牌（token）|-|-|1.10.28-dev.1|
 |2.1 获取报关单及制单明细|`IIcsDeclareService`<br />`.GetDelegateAsync`|`IIcsService`<br />`.IcsDeclareService`<br />`.GetDelegateAsync`|1.10.28-dev.1|
+|2.2 发送报关单及申报明细|`IIcsDeclareService`<br />`.TransferDelegateAsync`|`IIcsService`<br />`.IcsDeclareService`<br />`.TransferDelegateAsync`|1.10.28-dev.2|
+|2.4 发送审核状态|`IIcsDeclareService`<br />`.TransferStatusAsync`|`IIcsService`<br />`.IcsDeclareService`<br />`.TransferStatusAsync`|1.10.28-dev.2|
+|2.5 获取报关单集装箱明细|`IIcsDeclareService`<br />`.GetDelegateBoxAsync`|`IIcsService`<br />`.IcsDeclareService`<br />`.GetDelegateBoxAsync`|1.10.28-dev.2|
+|2.6 发送报关单集装箱明细|`IIcsDeclareService`<br />`.TransferDelegateBoxAsync`|`IIcsService`<br />`.IcsDeclareService`<br />`.TransferDelegateBoxAsync`|1.10.28-dev.2|
+|2.7 获取随附单证|`IIcsDeclareService`<br />`.GetBFSCicAsync`|`IIcsService`<br />`.IcsDeclareService`<br />`.GetBFSCicAsync`|1.10.28-dev.2|
+|2.8 发送随附单证|`IIcsDeclareService`<br />`.TransferBFSCicAsync`|`IIcsService`<br />`.IcsDeclareService`<br />`.TransferBFSCicAsync`|1.10.28-dev.2|
