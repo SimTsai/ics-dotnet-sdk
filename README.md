@@ -1,5 +1,4 @@
 # 跨境无忧ICS dotnet SDK
-===
 ![Nuget](https://img.shields.io/nuget/v/ics-dotnet-sdk)
 
 ## How to use
