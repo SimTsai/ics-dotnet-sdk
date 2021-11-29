@@ -1,11 +1,11 @@
 ﻿using System;
+using Ics.OpenApi.Implements;
+using Ics.OpenApi.Implements.Internal;
+using Ics.OpenApi.Interfaces;
+using Ics.OpenApi.Interfaces.Internal;
+using Ics.OpenApi.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Ics.OpenApi.Implements;
-using Ics.OpenApi.Interfaces;
-using Ics.OpenApi.Options;
-using Ics.OpenApi.Interfaces.Internal;
-using Ics.OpenApi.Implements.Internal;
 
 namespace Ics.OpenApi.Extensions.DependencyInjection
 {

@@ -1,8 +1,8 @@
 ﻿using System;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Ics.OpenApi.Extensions.DependencyInjection;
 using Ics.OpenApi.Options;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Ics.OpenApi.Tests.TestBase
 {

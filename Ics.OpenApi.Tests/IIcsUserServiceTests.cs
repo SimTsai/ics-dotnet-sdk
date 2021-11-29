@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Ics.OpenApi.Interfaces;
 using Ics.OpenApi.Interfaces.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;

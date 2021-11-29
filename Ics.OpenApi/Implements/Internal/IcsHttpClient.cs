@@ -1,17 +1,18 @@
-﻿using Ics.OpenApi.Extensions;
+﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using Ics.OpenApi.Options;
-using System;
-using Ics.OpenApi.Options.Internal;
-using Ics.OpenApi.Interfaces.Internal;
 using System.IO;
-using System.Text;
+using System.Net.Http;
 using System.Text.Json;
+using System.Threading.Tasks;
+using Ics.OpenApi.Extensions;
+using Ics.OpenApi.Interfaces.Internal;
+using Ics.OpenApi.Options;
+using Ics.OpenApi.Options.Internal;
+using Microsoft.Extensions.Options;
 #if NET5_0_OR_GREATER
 using System.Net.Http.Json;
+#else
+using System.Text;
 #endif
 
 namespace Ics.OpenApi.Implements.Internal

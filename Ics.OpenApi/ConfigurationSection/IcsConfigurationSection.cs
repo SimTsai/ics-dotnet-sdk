@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Configuration;
-using Microsoft.Extensions.Options;
 using Ics.OpenApi.Enums;
 using Ics.OpenApi.Options;
+using Microsoft.Extensions.Options;
 
 namespace Ics.OpenApi.ConfigurationSection
 {

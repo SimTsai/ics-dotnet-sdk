@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Ics.OpenApi.Enums;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
-using Ics.OpenApi.Enums;
 
 namespace Ics.OpenApi.Options
 {

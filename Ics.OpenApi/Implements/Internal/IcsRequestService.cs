@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Ics.OpenApi.Interfaces;
 using Ics.OpenApi.Interfaces.Internal;
-using Ics.OpenApi.Models.Internal;
 using Ics.OpenApi.Models.Internal.User;
 using Ics.OpenApi.Options;
 using Microsoft.Extensions.Options;

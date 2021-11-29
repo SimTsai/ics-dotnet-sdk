@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Ics.OpenApi.Interfaces;
+using Ics.OpenApi.Interfaces.Internal;
+using Ics.OpenApi.Options;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
-using Ics.OpenApi.Interfaces;
-using Ics.OpenApi.Options;
-using Ics.OpenApi.Interfaces.Internal;
 
 namespace Ics.OpenApi.Implements.Internal
 {

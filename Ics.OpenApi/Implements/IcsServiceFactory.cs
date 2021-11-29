@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Options;
-using Ics.OpenApi.ConfigurationSection;
+﻿using Ics.OpenApi.ConfigurationSection;
+using Ics.OpenApi.Implements.Internal;
 using Ics.OpenApi.Interfaces;
 using Ics.OpenApi.Options;
-using Ics.OpenApi.Implements.Internal;
+using Microsoft.Extensions.Options;
 
 namespace Ics.OpenApi.Implements
 {

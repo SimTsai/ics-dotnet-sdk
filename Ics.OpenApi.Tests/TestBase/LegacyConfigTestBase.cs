@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
-using Microsoft.Extensions.Options;
 using Ics.OpenApi.ConfigurationSection;
 using Ics.OpenApi.Options;
+using Microsoft.Extensions.Options;
 
 namespace Ics.OpenApi.Tests.TestBase
 {
