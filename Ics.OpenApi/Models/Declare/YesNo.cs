@@ -8,6 +8,10 @@ namespace Ics.OpenApi.Models.Declare
     public enum YesNo
     {
         /// <summary>
+        /// 未知
+        /// </summary>
+        [Description("未知")] Unknown = -1,
+        /// <summary>
         /// 否
         /// </summary>
         [Description("否")] No = 0,

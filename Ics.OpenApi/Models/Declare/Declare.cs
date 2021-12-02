@@ -32,7 +32,7 @@ namespace Ics.OpenApi.Models.Declare
         /// </summary>
         public string BusinessTypeName { get; init; }
         /// <summary>
-        /// 业务类型名称
+        /// 提运单号
         /// </summary>
         public string DeliveryNum { get; init; }
         /// <summary>
@@ -285,27 +285,27 @@ namespace Ics.OpenApi.Models.Declare
         /// <summary>
         /// 特殊关系确认
         /// </summary>
-        public YesNo IsRelationConfirm { get; init; }
+        public YesNo IsRelationConfirm { get; init; } = YesNo.Unknown;
         /// <summary>
         /// 价格影响确认
         /// </summary>
-        public YesNo IsPriceConfirm { get; init; }
+        public YesNo IsPriceConfirm { get; init; } = YesNo.Unknown;
         /// <summary>
         /// 支付特许权使用费确认
         /// </summary>
-        public YesNo IsPayConfirm { get; init; }
+        public YesNo IsPayConfirm { get; init; } = YesNo.Unknown;
         /// <summary>
         /// 自报自缴
         /// </summary>
-        public YesNo IsSelfPayment { get; init; }
+        public YesNo IsSelfPayment { get; init; } = YesNo.Unknown;
         /// <summary>
         /// 公式定价确认
         /// </summary>
-        public string ForPriceConfirm { get; init; }
+        public YesNo ForPriceConfirm { get; init; } = YesNo.Unknown;
         /// <summary>
         /// 暂定价格确认
         /// </summary>
-        public string ProPriceConfirm { get; init; }
+        public YesNo ProPriceConfirm { get; init; } = YesNo.Unknown;
         /// <summary>
         /// 检验检疫编号
         /// </summary>

@@ -50,6 +50,44 @@ namespace Ics.OpenApi.Models.AutoMapperProfiles
         decimal? Parse(string input, decimal? defaultValue = default)
             => decimal.TryParse(input, out var output) switch { true => output, _ => defaultValue };
 
+        int? YesNo2Value(YesNo input, int? defaultValue = default)
+        {
+            if (Enum.IsDefined(typeof(YesNo), input) && input != YesNo.Unknown)
+            {
+                return (int)input;
+            }
+            return defaultValue;
+        }
+
+        string YesNo2Value(YesNo input, string defaultValue = default)
+        {
+            var ynv = YesNo2Value(input, (int?)null);
+            if (ynv != null)
+            {
+                return ynv.ToString();
+            }
+            return defaultValue;
+        }
+
+        YesNo Value2YesNo(int? input)
+        {
+            if (!input.HasValue || !Enum.IsDefined(typeof(YesNo), (YesNo)input.Value))
+            {
+                return YesNo.Unknown;
+            }
+
+            return (YesNo)input.Value;
+        }
+
+        YesNo Value2YesNo(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return YesNo.Unknown;
+            }
+            return Enum.TryParse<YesNo>(input, out var ynv) switch { true => ynv, _ => YesNo.Unknown };
+        }
+
         void Request2IcsRequest()
         {
             CreateMap<GetDelegateRequest, IcsGetDelegateRequest>();
@@ -80,23 +118,31 @@ namespace Ics.OpenApi.Models.AutoMapperProfiles
                 .ForPath(dm => dm.Value2Type, p => p.MapFrom(s => s.Value2Type.ToString("D")))
                 .ForPath(dm => dm.Value3Type, p => p.MapFrom(s => s.Value3Type.ToString("D")))
 
-                .ForPath(dm => dm.IsRelationConfirm, p => p.MapFrom(s => s.IsRelationConfirm.ToString("D")))
-                .ForPath(dm => dm.IsPriceConfirm, p => p.MapFrom(s => s.IsPriceConfirm.ToString("D")))
-                .ForPath(dm => dm.IsPayConfirm, p => p.MapFrom(s => s.IsPayConfirm.ToString("D")))
+                .ForPath(dm => dm.IsRelationConfirm, p => p.MapFrom(s => YesNo2Value(s.IsRelationConfirm, (int?)null)))
+                .ForPath(dm => dm.IsPriceConfirm, p => p.MapFrom(s => YesNo2Value(s.IsPriceConfirm, (int?)null)))
+                .ForPath(dm => dm.IsPayConfirm, p => p.MapFrom(s => YesNo2Value(s.IsPayConfirm, (int?)null)))
+
+                .ForPath(dm => dm.ForPriceConfirm, p => p.MapFrom(s => YesNo2Value(s.ForPriceConfirm, (string)null)))
+                .ForPath(dm => dm.ProPriceConfirm, p => p.MapFrom(s => YesNo2Value(s.ProPriceConfirm, (string)null)))
+
                 .ForPath(dm => dm.IsSelfPayment, p => p.MapFrom(s => s.IsSelfPayment == YesNo.Yes));
         }
 
         void IcsDeclare2Declare()
         {
             CreateMap<IcsDeclare, Declare.Declare>()
-                .ForPath(dm => dm.IeFlag, p => p.MapFrom(s => ParseEnum<Declare.IeFlag>(s.IeFlag, IeFlag.Unknown)))
-                .ForPath(dm => dm.Value1Type, p => p.MapFrom(s => ParseEnum<Declare.ValueNType>(s.Value1Type, ValueNType.Unknown)))
-                .ForPath(dm => dm.Value2Type, p => p.MapFrom(s => ParseEnum<Declare.ValueNType>(s.Value2Type, ValueNType.Unknown)))
-                .ForPath(dm => dm.Value3Type, p => p.MapFrom(s => ParseEnum<Declare.ValueNType>(s.Value3Type, ValueNType.Unknown)))
+                .ForPath(dm => dm.IeFlag, p => p.MapFrom(s => ParseEnum<IeFlag>(s.IeFlag, IeFlag.Unknown)))
+                .ForPath(dm => dm.Value1Type, p => p.MapFrom(s => ParseEnum<ValueNType>(s.Value1Type, ValueNType.Unknown)))
+                .ForPath(dm => dm.Value2Type, p => p.MapFrom(s => ParseEnum<ValueNType>(s.Value2Type, ValueNType.Unknown)))
+                .ForPath(dm => dm.Value3Type, p => p.MapFrom(s => ParseEnum<ValueNType>(s.Value3Type, ValueNType.Unknown)))
 
-                .ForPath(dm => dm.IsRelationConfirm, p => p.MapFrom(s => s.IsRelationConfirm.GetValueOrDefault() == 1 ? YesNo.Yes : YesNo.No))
-                .ForPath(dm => dm.IsPriceConfirm, p => p.MapFrom(s => s.IsPriceConfirm.GetValueOrDefault() == 1 ? YesNo.Yes : YesNo.No))
-                .ForPath(dm => dm.IsPayConfirm, p => p.MapFrom(s => s.IsPayConfirm.GetValueOrDefault() == 1 ? YesNo.Yes : YesNo.No))
+                .ForPath(dm => dm.IsRelationConfirm, p => p.MapFrom(s => Value2YesNo(s.IsRelationConfirm)))
+                .ForPath(dm => dm.IsPriceConfirm, p => p.MapFrom(s => Value2YesNo(s.IsPriceConfirm)))
+                .ForPath(dm => dm.IsPayConfirm, p => p.MapFrom(s => Value2YesNo(s.IsPayConfirm)))
+
+                .ForPath(dm => dm.ForPriceConfirm, p => p.MapFrom(s => Value2YesNo(s.ForPriceConfirm)))
+                .ForPath(dm => dm.ProPriceConfirm, p => p.MapFrom(s => Value2YesNo(s.ProPriceConfirm)))
+
                 .ForPath(dm => dm.IsSelfPayment, p => p.MapFrom(s => s.IsSelfPayment.GetValueOrDefault() ? YesNo.Yes : YesNo.No));
         }
 
@@ -127,7 +173,7 @@ namespace Ics.OpenApi.Models.AutoMapperProfiles
                 .ForPath(dm => dm.LegalQty, p => p.MapFrom(s => Parse(s.LegalQty, null)))
                 .ForPath(dm => dm.SecondQty, p => p.MapFrom(s => Parse(s.SecondQty, null)))
 
-                .ForPath(dm => dm.LevyType, p => p.MapFrom(s => ParseEnum<Declare.LevyType>(s.LevyType, LevyType.Unknown)));
+                .ForPath(dm => dm.LevyType, p => p.MapFrom(s => ParseEnum<LevyType>(s.LevyType, LevyType.Unknown)));
         }
 
         void DelegateBox2IcsDelegateBox()

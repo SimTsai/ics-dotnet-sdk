@@ -33,7 +33,7 @@ namespace Ics.OpenApi.Models.Internal.Declare
         /// </summary>
         public string BusinessTypeName { get; init; }
         /// <summary>
-        /// 业务类型名称
+        /// 提运单号
         /// </summary>
         public string DeliveryNum { get; init; }
         /// <summary>
@@ -309,10 +309,12 @@ namespace Ics.OpenApi.Models.Internal.Declare
         public string ForPriceConfirm { get; init; }
         /// <summary>
         /// 暂定价格确认
+        /// "0"：否;"1"：是
         /// </summary>
         public string ProPriceConfirm { get; init; }
         /// <summary>
         /// 检验检疫编号
+        /// "0"：否;"1"：是
         /// </summary>
         public string InspectionNo { get; init; }
         /// <summary>
